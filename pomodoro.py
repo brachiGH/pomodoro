@@ -53,6 +53,16 @@ class TimerApp:
         self.master.title("Timer App")
         self.master.configure(bg='black')
         self.master.attributes('-topmost', True)
+        self.master.resizable(False, False) 
+
+        # Position the window in the top right corner of the screen
+        screen_width = self.master.winfo_screenwidth()
+        screen_height = self.master.winfo_screenheight()
+        window_width = 200  # Set the desired window width
+        window_height = 100  # Set the desired window height
+        x_position = screen_width - window_width
+        y_position = 100
+        self.master.geometry(f"{window_width}x{window_height}+{x_position}+{y_position}")
 
         self.main_timer_seconds = pomodor_timer
         self.rest_timer_seconds = rest_timer
