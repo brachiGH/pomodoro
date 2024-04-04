@@ -54,6 +54,7 @@ class TimerApp:
         self.master.configure(bg='black')
         self.master.attributes('-topmost', True)
         self.master.resizable(False, False) 
+        self.master.iconbitmap("pomodoro.ico")
 
         # Position the window in the top right corner of the screen
         screen_width = self.master.winfo_screenwidth()
