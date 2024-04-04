@@ -6,7 +6,7 @@ import base64
 import io
 import wave
 import base64
-from getdata import *
+from getassets import *
 import threading
 import pyaudio
 
@@ -17,7 +17,6 @@ wav_data = io.BytesIO(decoded_data) # Create a BytesIO object to handle the deco
 
 
 
-# Base64 encoded icon
 icon_data = get_icon_data()
 icon_bytes = base64.b64decode(icon_data) # Convert base64 string to bytes
 
@@ -123,13 +122,13 @@ class TimerApp:
         global pomodor_timer
         global rest_timer
         if self.timer_mode_var.get() == 1:
-            self.main_timer_seconds = 50 * 60  # 50 minutes
-            self.rest_timer_seconds = 10 * 60   # 10 minutes
+            self.main_timer_seconds = 50 * 60
+            self.rest_timer_seconds = 10 * 60
             pomodor_timer = self.main_timer_seconds
             rest_timer = self.rest_timer_seconds
         else:
-            self.main_timer_seconds = 25 * 60  # 25 minutes
-            self.rest_timer_seconds = 5 * 60    # 5 minutes
+            self.main_timer_seconds = 25 * 60
+            self.rest_timer_seconds = 5 * 60
             pomodor_timer = self.main_timer_seconds
             rest_timer = self.rest_timer_seconds
 
@@ -268,6 +267,9 @@ class TimerServer(BaseHTTPRequestHandler):
         else:
             self.send_response(404)
             self.end_headers()
+    def log_message(self, format, *args):
+        # Override to disable logging
+        pass
 
 
 if __name__ == "__main__":
