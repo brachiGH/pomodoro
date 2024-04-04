@@ -7,14 +7,21 @@ A productivity-enhancing tool that combines a straightforward Pomodoro timer wit
 - Select any file in your extension's directory (e.g., manifest.json).
 
 # Build
+
+**Package your Python application**: Use a tool like `PyInstaller` to package your Python script along with its dependencies into a standalone executable. Install PyInstaller if you haven't already:
+
+```bash
+pip install pyinstaller
+```
+
 ### windows
 ```bash
-pyinstaller --onefile --noconsole --icon=assets/pomodoro.ico pomodor.py
+pyinstaller --onefile --noconsole --icon=assets/pomodoro.ico pomodoro.py
 ```
 ### linux
 - **Create the binary**:
 ```bash
-pyinstaller --onefile --noconsole --icon=assets/pomodoro.ico pomodor.py
+pyinstaller --onefile --noconsole --icon=assets\pomodoro.ico pomodoro.py
 ```
 make it executable:
 ```bash
@@ -38,7 +45,7 @@ mkdir Pomodoro.AppDir
 cp dist/pomodoro Pomodoro.AppDir/AppRun
 cp assets/pomodoro.png Pomodoro.AppDir/
 ```
-- **Create myapp.desktop**: `myapp.desktop` should contain:
+- **Create myapp.desktop**: `Pomodoro.desktop` should contain:
  ```ini
 [Desktop Entry]
 Name=Pomodoro
