@@ -38,7 +38,7 @@ function showAccessDeniedMessage() {
   messageDiv.style.left = 0;
   messageDiv.style.width = '100%';
   messageDiv.style.height = '100%';
-  messageDiv.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+  messageDiv.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
   messageDiv.style.color = '#fff';
   messageDiv.style.fontFamily = 'Arial, sans-serif';
   messageDiv.style.fontSize = '24px';
@@ -49,7 +49,18 @@ function showAccessDeniedMessage() {
 
   // Append the message div to the document body
   document.body.appendChild(messageDiv);
+
+  // Disable key press events
+  document.addEventListener('keydown', function(event) {
+    event.preventDefault();
+  });
+
+  // Disable mouse scroll events
+  document.addEventListener('wheel', function(event) {
+    event.preventDefault();
+  }, { passive: false });
 }
+
 
 function removeAccessDeniedMessage() {
   var messageDiv = document.getElementById('access-denied-message');
