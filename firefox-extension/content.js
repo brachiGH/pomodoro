@@ -38,7 +38,7 @@ function showAccessDeniedMessage() {
   messageDiv.style.left = 0;
   messageDiv.style.width = '100%';
   messageDiv.style.height = '100%';
-  messageDiv.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+  messageDiv.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
   messageDiv.style.color = '#fff';
   messageDiv.style.fontFamily = 'Arial, sans-serif';
   messageDiv.style.fontSize = '24px';
@@ -50,15 +50,9 @@ function showAccessDeniedMessage() {
   // Append the message div to the document body
   document.body.appendChild(messageDiv);
 
-  // Disable key press events
-  document.addEventListener('keydown', function(event) {
-    event.preventDefault();
-  });
-
-  // Disable mouse scroll events
-  document.addEventListener('wheel', function(event) {
-    event.preventDefault();
-  }, { passive: false });
+  // Add event listeners for key press and mouse scroll events
+  document.addEventListener('keydown', disableEvent);
+  document.addEventListener('wheel', disableEvent, { passive: false });
 }
 
 
@@ -67,4 +61,13 @@ function removeAccessDeniedMessage() {
   if (messageDiv) {
     messageDiv.parentNode.removeChild(messageDiv);
   }
+
+  // Remove event listeners for key press and mouse scroll events
+  document.removeEventListener('keydown', disableEvent);
+  document.removeEventListener('wheel', disableEvent, { passive: false });
+}
+
+
+function disableEvent(event) {
+  event.preventDefault();
 }
