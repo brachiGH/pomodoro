@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "pomodoro url blocker",
+  "version": "1.0",
+  "description": ".",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "tabs"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "pomodoro.png",
+      "48": "pomodoro.png",
+      "128": "pomodoro.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}
